@@ -45,7 +45,7 @@ public class DeliveryTest {
         $("[data-test-id=phone] input").setValue("+79146568935");
         $("[data-test-id=agreement]").click();
         $$("button").find(exactText("Забронировать")).click();
-        $(withText("Доставка в выбранный город недоступна")).shouldBe(visible, Duration.ofSeconds(15));
+        $(withText("Доставка в выбранный город недоступна")).shouldBe(visible);
 //
     }
 
@@ -58,7 +58,7 @@ public class DeliveryTest {
         $("[data-test-id=phone] input").setValue("+79146568935");
         $("[data-test-id=agreement]").click();
         $$("button").find(exactText("Забронировать")).click();
-        $(withText("Заказ на выбранную дату невозможен")).shouldBe(visible, Duration.ofSeconds(15));
+        $(withText("Заказ на выбранную дату невозможен")).shouldBe(visible);
     }
 
     @Test
@@ -71,7 +71,7 @@ public class DeliveryTest {
         $("[data-test-id=phone] input").setValue("+79146568935");
         $("[data-test-id=agreement]").click();
         $$("button").find(exactText("Забронировать")).click();
-        $(withText("Имя и Фамилия указаные неверно. Допустимы только русские буквы, пробелы и дефисы")).shouldBe(visible, Duration.ofSeconds(15));
+        $(withText("Имя и Фамилия указаные неверно. Допустимы только русские буквы, пробелы и дефисы")).shouldBe(visible);
     }
 
     @Test
@@ -84,6 +84,6 @@ public class DeliveryTest {
         $("[data-test-id=phone] input").setValue("89146568935");
         $("[data-test-id=agreement]").click();
         $$("button").find(exactText("Забронировать")).click();
-        $(withText("Телефон указан неверно. Должно быть 11 цифр, например, +79012345678")).shouldBe(visible, Duration.ofSeconds(15));
+        $(withText("Телефон указан неверно. Должно быть 11 цифр, например, +79012345678")).shouldBe(visible);
     }
 }
