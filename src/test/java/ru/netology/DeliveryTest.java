@@ -12,6 +12,7 @@ import java.time.format.DateTimeFormatter;
 
 import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class DeliveryTest {
@@ -44,7 +45,8 @@ public class DeliveryTest {
         $("[data-test-id=phone] input").setValue("+79146568935");
         $("[data-test-id=agreement]").click();
         $$("button").find(exactText("Забронировать")).click();
-        $("[data-test-id=city]").shouldHave(Condition.text("Доставка в выбранный город недоступна"), Duration.ofSeconds(15));
+        $(withText("Доставка в выбранный город недоступна")).shouldBe(visible, Duration.ofSeconds(15));
+//
     }
 
     @Test
@@ -56,7 +58,7 @@ public class DeliveryTest {
         $("[data-test-id=phone] input").setValue("+79146568935");
         $("[data-test-id=agreement]").click();
         $$("button").find(exactText("Забронировать")).click();
-        $("[data-test-id=date]").shouldHave(Condition.text("Заказ на выбранную дату невозможен"), Duration.ofSeconds(15));
+        $(withText("Заказ на выбранную дату невозможен")).shouldBe(visible, Duration.ofSeconds(15));
     }
 
     @Test
@@ -69,7 +71,7 @@ public class DeliveryTest {
         $("[data-test-id=phone] input").setValue("+79146568935");
         $("[data-test-id=agreement]").click();
         $$("button").find(exactText("Забронировать")).click();
-        $("[data-test-id=name]").shouldHave(Condition.text("Имя и Фамилия указаные неверно. Допустимы только русские буквы, пробелы и дефисы"), Duration.ofSeconds(15));
+        $(withText("Имя и Фамилия указаные неверно. Допустимы только русские буквы, пробелы и дефисы")).shouldBe(visible, Duration.ofSeconds(15));
     }
 
     @Test
@@ -82,6 +84,6 @@ public class DeliveryTest {
         $("[data-test-id=phone] input").setValue("89146568935");
         $("[data-test-id=agreement]").click();
         $$("button").find(exactText("Забронировать")).click();
-        $("[data-test-id=phone]").shouldHave(Condition.text("Телефон указан неверно. Должно быть 11 цифр, например, +79012345678"), Duration.ofSeconds(15));
+        $(withText("Телефон указан неверно. Должно быть 11 цифр, например, +79012345678")).shouldBe(visible, Duration.ofSeconds(15));
     }
 }
