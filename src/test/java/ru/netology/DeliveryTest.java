@@ -33,6 +33,8 @@ public class DeliveryTest {
         $("[data-test-id=agreement]").click();
         $$("button").find(exactText("Забронировать")).click();
         $("[data-test-id=notification]").shouldHave(Condition.text("Успешно!"), Duration.ofSeconds(15));
+        $(withText("Встреча успешно забронирована на")).shouldBe(visible, Duration.ofSeconds(15));
+        $(withText(newData)).shouldBe(visible, Duration.ofSeconds(15));
     }
 
     @Test
